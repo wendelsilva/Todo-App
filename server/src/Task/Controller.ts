@@ -1,19 +1,20 @@
 import { routes } from "../routes";
 import { prisma } from "../prisma";
 
-routes.get('/tasks', (req, res) => {
-    async function getTasks() {
+routes.get('/tasks', async (req, res) => {
+
+    try {
         const tasks = await prisma.task.findMany();
         res.status(200).send(tasks);
+    } catch {
+        res.status(404).send({error: 'no tasks found'})
     }
+});
 
-    getTasks();
-})
-
-routes.post('/task', (req, res) => {
+routes.post('/task', async (req, res) => {
     const { userId, description } = req.body;
 
-    async function createTask() {
+    try {
         await prisma.task.create({
             data: {
                 authorId: userId,
@@ -21,68 +22,46 @@ routes.post('/task', (req, res) => {
             }
         });
 
-        res.status(201).send()
+        res.status(201).send();
+    } catch {
+        res.status(400).send({error: 'error creating task'});
     }
-
-    createTask();
 });
 
-routes.delete('/task/:id', (req, res) => {
+routes.delete('/task/:id', async (req, res) => {
     const taskId = req.params.id;
 
-    async function deleteTask() {
-        const task = await prisma.task.findUnique({
+    try {
+        await prisma.task.delete({
             where: {
                 id: Number(taskId)
             }
         });
 
-        if(task) {
-            await prisma.task.delete({
-                where: {
-                    id: Number(taskId)
-                }
-            });
-
-            res.status(200).send();
-        } else {
-            res.status(404).send({error: 'Task not found'});
-        }
+        res.status(200).send();
+    } catch {
+        res.status(400).send({error: 'error deleting task'});
     }
+});
 
-    deleteTask();
-})
-
-routes.put('/task/:id', (req, res) => {
+routes.put('/task/:id', async (req, res) => {
     const taskId = req.params.id;
     const description = req.body.description;
 
-    async function updateTask() {
-        const task = await prisma.task.findUnique({
+    try {
+        await prisma.task.update({
             where: {
-                id: Number(taskId)
+                id: Number(taskId),
+            },
+            data : {
+                description: description
             }
         });
 
-        if(task) {
-            await prisma.task.update({
-                where: {
-                    id: Number(taskId),
-                },
-                data : {
-                    description: description
-                }
-            });
-
-            res.status(200).send();
-        } else {
-            res.status(404).send({error: 'Task not found'});
-        }
-
-        
+        res.status(200).send();
+    } catch {
+        res.status(400).send({error: 'error updating task'});
     }
-
-    updateTask();
 })
 
 module.exports = routes;
