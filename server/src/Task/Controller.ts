@@ -1,7 +1,8 @@
 import { routes } from "../routes";
 import { prisma } from "../prisma";
+import { auth } from "../utils/auth";
 
-routes.get('/tasks', async (req, res) => {
+routes.get('/tasks', auth, async (req, res) => {
 
     try {
         const tasks = await prisma.task.findMany();
@@ -11,7 +12,7 @@ routes.get('/tasks', async (req, res) => {
     }
 });
 
-routes.post('/task', async (req, res) => {
+routes.post('/task', auth, async (req, res) => {
     const { userId, description } = req.body;
 
     try {
@@ -28,7 +29,7 @@ routes.post('/task', async (req, res) => {
     }
 });
 
-routes.delete('/task/:id', async (req, res) => {
+routes.delete('/task/:id', auth, async (req, res) => {
     const taskId = req.params.id;
 
     try {
@@ -44,7 +45,7 @@ routes.delete('/task/:id', async (req, res) => {
     }
 });
 
-routes.put('/task/:id', async (req, res) => {
+routes.put('/task/:id', auth, async (req, res) => {
     const taskId = req.params.id;
     const description = req.body.description;
 
