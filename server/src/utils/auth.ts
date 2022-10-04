@@ -1,7 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 
-const secret = String(process.env.VITE_SECRET_KEY)
+const secret = String(process.env.VITE_SECRET_KEY);
 
 export function auth(req: express.Request, res: express.Response, next: express.NextFunction) {
     const authToken = req.headers['authorization'];
@@ -17,9 +17,9 @@ export function auth(req: express.Request, res: express.Response, next: express.
             } else {
                 next();
             }
-        })
+        });
 
     } else {
         res.status(401).send({error: 'invalid token'});
     }
-}
+};

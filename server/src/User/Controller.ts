@@ -38,7 +38,7 @@ routes.post('/login', async (req, res) => {
     }
 });
 
-routes.post("/register", async (req, res) => {
+routes.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
 
     if( name && email && password ) {
