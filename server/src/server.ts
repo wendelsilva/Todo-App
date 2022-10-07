@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import { routes } from './routes';
+import { routes } from './routes'
+import swaggerUi from 'swagger-ui-express';
+
+import swaggerDocs from './swagger.json';
 
 const app = express();
 
@@ -13,6 +16,8 @@ app.use(routes);
 
 app.use('/', tasksController);
 app.use('/', userController);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(process.env.PORT || 3333, () => {
     console.log("HTTP Server Running");
