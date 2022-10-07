@@ -96,6 +96,133 @@
                     }
                 }
             }
+        },
+        "/tasks": {
+            "get": {
+                "summary": "Get Tasks",
+                "description": "this route is responsible for providing all the tasks that the user has",
+                "tags": ["Task"],
+                "security": [{"bearerAuth": []}],
+                "responses": {
+                    "404": {
+                        "description": "tasks not found"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "response": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Task"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task": {
+            "post": {
+                "summary": "Create Task",
+                "description": "this route is responsible for creating tasks",
+                "tags": ["Task"],
+                "security": [{"bearerAuth": []}],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Task"
+                            },
+                            "examples": {
+                                "task": {
+                                    "value": {
+                                        "userId": 1,
+                                        "description": "new task"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "error creating task"
+                    },
+                    "201": {
+                        "description": "task created successfully"
+                    }
+                }
+            }
+        },
+        "/task/{id}:": {
+            "delete": {
+                "summary": "Delete Task",
+                "description": "this route is responsible for deleting tasks",
+                "tags": ["Task"],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "the task id"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "error deleting task"
+                    },
+                    "200": {
+                        "description": "task deleted successfully"
+                    }
+                }
+            }
+        },
+        "/task/:{id}": {
+            "put": {
+                "summary": "Update Task",
+                "description": "this route is responsible for updating tasks",
+                "tags": ["Task"],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "the task id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Task"
+                            },
+                            "examples": {
+                                "task": {
+                                    "value": {
+                                        "description": "new description for task"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "error updating task"
+                    },
+                    "200": {
+                        "description": "task updated successfully"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -118,6 +245,20 @@
                 "type": "object",
                 "properties": {
                     "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Task": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "authorId": {
+                        "type": "number"
+                    },
+                    "description": {
                         "type": "string"
                     }
                 }
