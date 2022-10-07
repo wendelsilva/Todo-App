@@ -1,6 +1,6 @@
-import { routes } from "../routes";
-import { prisma } from "../prisma";
-import { auth } from "../utils/auth";
+import { routes } from '../routes';
+import { prisma } from '../prisma';
+import { auth } from '../utils/auth';
 
 routes.get('/tasks', auth, async (req, res) => {
 
@@ -8,7 +8,7 @@ routes.get('/tasks', auth, async (req, res) => {
         const tasks = await prisma.task.findMany();
         res.status(200).send(tasks);
     } catch {
-        res.status(404).send({error: 'no tasks found'})
+        res.status(404).send({error: 'no tasks found'});
     }
 });
 
@@ -19,7 +19,7 @@ routes.post('/task', auth, async (req, res) => {
         await prisma.task.create({
             data: {
                 authorId: userId,
-                description: description,
+                description,
             }
         });
 
@@ -55,7 +55,7 @@ routes.put('/task/:id', auth, async (req, res) => {
                 id: Number(taskId),
             },
             data : {
-                description: description
+                description,
             }
         });
 
@@ -63,6 +63,6 @@ routes.put('/task/:id', auth, async (req, res) => {
     } catch {
         res.status(400).send({error: 'error updating task'});
     }
-})
+});
 
 module.exports = routes;

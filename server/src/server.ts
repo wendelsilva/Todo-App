@@ -20,5 +20,5 @@ app.use('/', userController);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(process.env.PORT || 3333, () => {
-    console.log("HTTP Server Running")
-})
+    console.log("HTTP Server Running");
+});
