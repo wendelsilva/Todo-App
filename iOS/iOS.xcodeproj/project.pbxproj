@@ -9,19 +9,27 @@
 /* Begin PBXBuildFile section */
 		53351A5C28C77C770071F1E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53351A5B28C77C770071F1E9 /* AppDelegate.swift */; };
 		53351A5E28C77C770071F1E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53351A5D28C77C770071F1E9 /* SceneDelegate.swift */; };
-		53351A6028C77C770071F1E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53351A5F28C77C770071F1E9 /* ViewController.swift */; };
+		53351A6028C77C770071F1E9 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53351A5F28C77C770071F1E9 /* MainScreenController.swift */; };
 		53351A6528C77C780071F1E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53351A6428C77C780071F1E9 /* Assets.xcassets */; };
 		53351A6828C77C780071F1E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53351A6628C77C780071F1E9 /* LaunchScreen.storyboard */; };
+		5366A41028FF26B90063ABA7 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5366A40F28FF26B90063ABA7 /* MainScreenView.swift */; };
+		5366A41228FF26C50063ABA7 /* MainScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5366A41128FF26C50063ABA7 /* MainScreenModel.swift */; };
+		5366A41528FF27220063ABA7 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5366A41428FF27220063ABA7 /* ViewUtils.swift */; };
+		5366A41828FF27BA0063ABA7 /* ViewCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5366A41728FF27BA0063ABA7 /* ViewCoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		53351A5828C77C770071F1E9 /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53351A5B28C77C770071F1E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53351A5D28C77C770071F1E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		53351A5F28C77C770071F1E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		53351A5F28C77C770071F1E9 /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		53351A6428C77C780071F1E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53351A6728C77C780071F1E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53351A6928C77C780071F1E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5366A40F28FF26B90063ABA7 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		5366A41128FF26C50063ABA7 /* MainScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModel.swift; sourceTree = "<group>"; };
+		5366A41428FF27220063ABA7 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		5366A41728FF27BA0063ABA7 /* ViewCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,66 @@
 		53351A5A28C77C770071F1E9 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				53351A5B28C77C770071F1E9 /* AppDelegate.swift */,
-				53351A5D28C77C770071F1E9 /* SceneDelegate.swift */,
-				53351A5F28C77C770071F1E9 /* ViewController.swift */,
-				53351A6428C77C780071F1E9 /* Assets.xcassets */,
-				53351A6628C77C780071F1E9 /* LaunchScreen.storyboard */,
+				5366A40D28FF262B0063ABA7 /* Resource */,
+				5366A40B28FF26100063ABA7 /* Application */,
+				5366A40C28FF261F0063ABA7 /* Source */,
 				53351A6928C77C780071F1E9 /* Info.plist */,
 			);
 			path = iOS;
+			sourceTree = "<group>";
+		};
+		5366A40B28FF26100063ABA7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				53351A5B28C77C770071F1E9 /* AppDelegate.swift */,
+				53351A5D28C77C770071F1E9 /* SceneDelegate.swift */,
+				53351A6628C77C780071F1E9 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		5366A40C28FF261F0063ABA7 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5366A41628FF27A00063ABA7 /* Protocols */,
+				5366A41328FF26F00063ABA7 /* Utils */,
+				5366A40E28FF264B0063ABA7 /* MainScreen */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		5366A40D28FF262B0063ABA7 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				53351A6428C77C780071F1E9 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		5366A40E28FF264B0063ABA7 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				53351A5F28C77C770071F1E9 /* MainScreenController.swift */,
+				5366A40F28FF26B90063ABA7 /* MainScreenView.swift */,
+				5366A41128FF26C50063ABA7 /* MainScreenModel.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		5366A41328FF26F00063ABA7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5366A41428FF27220063ABA7 /* ViewUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5366A41628FF27A00063ABA7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5366A41728FF27BA0063ABA7 /* ViewCoding.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +194,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53351A6028C77C770071F1E9 /* ViewController.swift in Sources */,
+				53351A6028C77C770071F1E9 /* MainScreenController.swift in Sources */,
 				53351A5C28C77C770071F1E9 /* AppDelegate.swift in Sources */,
+				5366A41528FF27220063ABA7 /* ViewUtils.swift in Sources */,
+				5366A41228FF26C50063ABA7 /* MainScreenModel.swift in Sources */,
+				5366A41828FF27BA0063ABA7 /* ViewCoding.swift in Sources */,
 				53351A5E28C77C770071F1E9 /* SceneDelegate.swift in Sources */,
+				5366A41028FF26B90063ABA7 /* MainScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
