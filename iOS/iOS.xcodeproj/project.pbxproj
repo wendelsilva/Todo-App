@@ -16,6 +16,9 @@
 		5366A41228FF26C50063ABA7 /* MainScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5366A41128FF26C50063ABA7 /* MainScreenModel.swift */; };
 		5366A41528FF27220063ABA7 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5366A41428FF27220063ABA7 /* ViewUtils.swift */; };
 		5366A41828FF27BA0063ABA7 /* ViewCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5366A41728FF27BA0063ABA7 /* ViewCoding.swift */; };
+		539B926E291B1F9A0049A35F /* LoginScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539B926D291B1F9A0049A35F /* LoginScreenController.swift */; };
+		539B9270291B200A0049A35F /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539B926F291B200A0049A35F /* LoginScreenView.swift */; };
+		539B9273291B285D0049A35F /* EmailAndPassWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539B9272291B285D0049A35F /* EmailAndPassWord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		5366A41128FF26C50063ABA7 /* MainScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModel.swift; sourceTree = "<group>"; };
 		5366A41428FF27220063ABA7 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		5366A41728FF27BA0063ABA7 /* ViewCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoding.swift; sourceTree = "<group>"; };
+		539B926D291B1F9A0049A35F /* LoginScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenController.swift; sourceTree = "<group>"; };
+		539B926F291B200A0049A35F /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
+		539B9272291B285D0049A35F /* EmailAndPassWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAndPassWord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,7 @@
 		5366A40C28FF261F0063ABA7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				539B926C291B1F850049A35F /* LoginScreen */,
 				5366A41628FF27A00063ABA7 /* Protocols */,
 				5366A41328FF26F00063ABA7 /* Utils */,
 				5366A40E28FF264B0063ABA7 /* MainScreen */,
@@ -122,6 +129,24 @@
 				5366A41728FF27BA0063ABA7 /* ViewCoding.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		539B926C291B1F850049A35F /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				539B9271291B283A0049A35F /* Components */,
+				539B926D291B1F9A0049A35F /* LoginScreenController.swift */,
+				539B926F291B200A0049A35F /* LoginScreenView.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		539B9271291B283A0049A35F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				539B9272291B285D0049A35F /* EmailAndPassWord.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +221,10 @@
 			files = (
 				53351A6028C77C770071F1E9 /* MainScreenController.swift in Sources */,
 				53351A5C28C77C770071F1E9 /* AppDelegate.swift in Sources */,
+				539B9273291B285D0049A35F /* EmailAndPassWord.swift in Sources */,
 				5366A41528FF27220063ABA7 /* ViewUtils.swift in Sources */,
+				539B926E291B1F9A0049A35F /* LoginScreenController.swift in Sources */,
+				539B9270291B200A0049A35F /* LoginScreenView.swift in Sources */,
 				5366A41228FF26C50063ABA7 /* MainScreenModel.swift in Sources */,
 				5366A41828FF27BA0063ABA7 /* ViewCoding.swift in Sources */,
 				53351A5E28C77C770071F1E9 /* SceneDelegate.swift in Sources */,
