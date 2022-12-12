@@ -1,0 +1,275 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "TodoApp - API",
+        "description": "this api aims to manage the tasks of a user",
+        "contact": {
+            "email": "wendel@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333",
+            "description": "Development API"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "summary": "User Login",
+                "description": "this route will be responsible for logging in the user and generating their access token",
+                "tags": ["User"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "email": "wendel@gmail.com",
+                                        "password": "qwe123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "internal server error"
+                    },
+                    "404": {
+                        "description": "user not found"
+                    },
+                    "401": {
+                        "description": "invalid credentials"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "summary": "User Register",
+                "description": "this route will be responsible for registering the user",
+                "tags": ["User"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "Wendel",
+                                        "email": "wendel@gmail.com",
+                                        "password": "qwe123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "internal server error"
+                    },
+                    "409": {
+                        "description": "duplicated email"
+                    },
+                    "201": {
+                        "description": "user created successfully"
+                    }
+                }
+            }
+        },
+        "/tasks": {
+            "get": {
+                "summary": "Get Tasks",
+                "description": "this route is responsible for providing all the tasks that the user has",
+                "tags": ["Task"],
+                "security": [{"bearerAuth": []}],
+                "responses": {
+                    "404": {
+                        "description": "tasks not found"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "response": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Task"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task": {
+            "post": {
+                "summary": "Create Task",
+                "description": "this route is responsible for creating tasks",
+                "tags": ["Task"],
+                "security": [{"bearerAuth": []}],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Task"
+                            },
+                            "examples": {
+                                "task": {
+                                    "value": {
+                                        "userId": 1,
+                                        "description": "new task"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "error creating task"
+                    },
+                    "201": {
+                        "description": "task created successfully"
+                    }
+                }
+            }
+        },
+        "/task/{id}:": {
+            "delete": {
+                "summary": "Delete Task",
+                "description": "this route is responsible for deleting tasks",
+                "tags": ["Task"],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "the task id"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "error deleting task"
+                    },
+                    "200": {
+                        "description": "task deleted successfully"
+                    }
+                }
+            }
+        },
+        "/task/:{id}": {
+            "put": {
+                "summary": "Update Task",
+                "description": "this route is responsible for updating tasks",
+                "tags": ["Task"],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "the task id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Task"
+                            },
+                            "examples": {
+                                "task": {
+                                    "value": {
+                                        "description": "new description for task"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "error updating task"
+                    },
+                    "200": {
+                        "description": "task updated successfully"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Token": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Task": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "authorId": {
+                        "type": "number"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
